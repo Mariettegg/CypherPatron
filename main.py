@@ -18,6 +18,35 @@ def getPos(word ,letter):
         else:
             index += 1
 
+def getSimilar():
+    word = input("input >> ")
+    file = input("word database >> ")
+    try:
+        f = open(file, "r")
+
+    except :
+        print("That file does not exist")
+        return 0
+
+    words_alpha = f.readlines()
+
+
+    result = []
+
+    pattern = getPattern(word)
+
+    for sample in words_alpha:
+        sample = sample[:-1]
+        if len(sample) == len(word):
+            samplePattern = getPattern(sample)
+            if pattern == samplePattern:
+                result.append(sample)
+
+    for x in result:
+        print(x)
+
+
+
 
 def stringBreakDown(string):
     result = []
@@ -82,31 +111,8 @@ def stringBreakDown(string):
 
 ### MAIN ###
 
-def getSimilar(word):
-    f = open("words_alpha.txt", "r")
-    words_alpha = f.readlines()
 
 
-    result = []
 
-    pattern = getPattern(word)
-
-    for sample in words_alpha:
-        sample = sample[:-1]
-        if len(sample) == len(word):
-            samplePattern = getPattern(sample)
-            if pattern == samplePattern:
-                result.append(sample)
-
-    for x in result:
-        print(x)
-
-word = input("input >> ")
-getSimilar(word)
-
-example1 = "VUMQ KG XGR BEQ VUEF XGR NLGPP M NUSDHMFZEE VSQU M PNSEFQSPQ? M PQELFCX VGLKEK CEQQEL YLGD QUE EQUSNP OGMLK."
-example2 = "7 12 26 20   14 4   22 4 15   14 4   7 12 3 2   22 4 15   12 26 16 3   2 15 6 3 24 25 5   5 4 14 3 23"
-
-example1 = stringBreakDown(example1)
-example2 = stringBreakDown(example2)
+getSimilar()
 
