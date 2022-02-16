@@ -71,7 +71,6 @@ def getSimilar():
 
 
 
-
 def stringBreakDown(string):
     result = []
     letters = False
@@ -131,6 +130,7 @@ def stringBreakDown(string):
             variable = ""
 
     print(result)
+
 
 
 ### MAIN ###
